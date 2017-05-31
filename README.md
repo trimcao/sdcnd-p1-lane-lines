@@ -22,7 +22,11 @@ To meet specifications in the project, take a look at the requirements in the [p
 
 My pipeline consists of the following steps: (1) blur the image using Gaussian Blur function, (2) find the Canny edges, (3) choose the region of interest (masked region), (4) find the Hough lines, (5) extrapolate the Hough lines to get two lane lines (left and right).
 
-![original image](./test_images/whiteCarLaneSwitch.jpg)
+<!--
+[original image](./test_images/whiteCarLaneSwitch.jpg)
+-->
+
+<img src="./test_images/whiteCarLaneSwitch.jpg" alt="original image" style="width: 720px;"/>
 
 I did not convert the image into grayscale colorspace because I found it did not work well with the Challenge video. I think the reason grayscale was suggested in the lesson is speed. However, in this project I focus on finding the most possible accurate lane lines so I keep the normal RGB colorspace.
 

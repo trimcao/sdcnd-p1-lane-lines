@@ -32,11 +32,11 @@ I did not convert the image into grayscale colorspace because I found it did not
 
 ![Canny edges](./test_images_output/whiteCarLaneSwitch_canny.jpg)
 
-Probably the most tricky part of the project is to get reasonable Hough lines. At first, I thought the ideal Hough lines should have the correct slope and be as long as possible. Then it would be easier to extend the already long and mostly correct Hough lines to get the lane lines. As a result, at first I chose the parameters to get only a few Hough lines.
+Probably the most tricky part of the project is to get reasonable Hough lines. At first, I thought the ideal Hough lines should have the correct slope and be as long as possible. Then it would be easier to extend the already long and mostly correct Hough lines to get the lane lines. As a result, in the beginning I chose the parameters to get only a few Hough lines.
 
 ![Hough lines](./test_images_output/whiteCarLaneSwitch_hough.jpg)
 
-Unfortunately, when I tried the pipeline on a video, many frames do not output any Hough lines because the criteria were too selective. Now the idea is changed. The parameters are tuned so each frame in the video output numerous Hough lines, then I filter out the lines with bad slopes (too vertical or too horizontal). This way, I always have plenty of Hough lines in each frame.
+Unfortunately, when I tried the pipeline on a video, many frames do not output any Hough lines because the criteria were too selective. I need to relax the criteria for finding Hough lines. The parameters are tuned so each frame in the video output numerous Hough lines, then I filter out the lines with bad slopes (too vertical or too horizontal). This way, I have plenty of Hough lines in each frame.
 
 ![Extrapolated lines](./test_images_output/whiteCarLaneSwitch.jpg)
 
@@ -46,13 +46,13 @@ To draw a single lane line in each side, I extrapolate the Hough lines using fun
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-The challenge video shows many potential shortcomings of the current pipeline. There are situations that can be tricky. For example, the pavement of the road changes color abruptly and the camera does not calibrate the brightness on time. This might make it difficult to see the lane lines in the image.
+The challenge video shows many potential shortcomings of the current pipeline. There are situations that can be tricky. For example, when the pavement of the road changes color abruptly and the camera does not calibrate the brightness on time, it can be difficult to see the lane lines in the image.
 
 Other problems include shadows of objects on the road (such as trees or buildings) and curvy road. Definitely we need more advanced methods to solve these problems.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-Currently the lane lines found using my pipeline flickers a bit in the videos. A common idea is instead of find the lane lines in each frame, we compute the average of line slopes over a period of time.
+Currently the lane lines found using my pipeline flickers a bit in the videos. A common idea is instead of finding the lane lines in each frame, we compute the average of line slopes over a period of time.
 
 While this idea would make the lane lines much more stable, I'm not sure that the average slope is a good solution. In case we need to take a sharp turn, surely we would get lane lines with very inaccurate slopes. And do not forget that it is more crucial to find the correct lane lines when making turns rather than driving straight like in the videos. Therefore, I want to find a solution that can find reasonably accurate lane lines in real-time (not an average lane line).

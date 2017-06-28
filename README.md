@@ -18,6 +18,17 @@ To meet specifications in the project, take a look at the requirements in the [p
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
 
+README
+---
+File *P1.ipynb* is a notebook that contains the code of the project.
+
+You can follow the notebook to use the finding-lane pipeline on images.
+The last section includes the code to draw the lanes in a video.
+
+
+Write-up
+---
+
 ### 1. Lane-finding pipeline
 
 My pipeline consists of the following steps: (1) blur the image using Gaussian Blur function, (2) find the Canny edges, (3) choose the region of interest (masked region), (4) find the Hough lines, (5) extrapolate the Hough lines to get two lane lines (left and right).
